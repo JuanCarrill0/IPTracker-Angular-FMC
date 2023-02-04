@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="titleBox">
+        <h1 class="title">IP Address Tracker</h1>
+    </div>
+    <div class="inputBox">
+        <div class="input">
+            <input type="text" name="" id="" [(ngModel)]="inputValue" (keyup.enter)="onSubmit()">
+        </div>
+        <div class="bottomSubmit">
+            <button type="submit" (click)="onSubmit()">
+                <img src="/assets/icon-arrow.svg" alt="">
+            </button>
+        </div>
+    </div>
+    <div class="infoBox">
+        <div class="ipInfo">
+            <p class="textGray">IP ADDRESS </p>
+            <p> {{ip}}</p>
+        </div>
+        <div class="locationInfo">
+            <p class="textGray">LOCATION </p>
+            <p>{{country}}</p>
+            <p>{{city}}</p>
+        </div>
+        <div class="timezoneInfo">
+            <p class="textGray">TIMEZONE </p>
+            <p>{{timezone}}</p>
+        </div>
+        <div class="ispInfo">
+            <p class="textGray">ISP </p>
+            <p>{{isp}}</p>
+        </div>
+    </div>
+</div>
