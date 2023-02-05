@@ -1,14 +1,15 @@
-<div class="content">
+<div class="content" >
     <div class="titleBox">
         <h1 class="title">IP Address Tracker</h1>
     </div>
     <div class="inputBox">
         <div class="input">
-            <input type="text" name="" id="" [(ngModel)]="inputValue" (keyup.enter)="newInput()" (keyup.enter)="onSubmit()" >
+                <label for="inputIp"></label>
+                <input type="text" id="inputIp" (keyup.enter)="newInput()" (keyup.enter)="onSubmit()" >
         </div>
         <div class="bottomSubmit">
             <button type="submit" (click)="newInput()" (click)="onSubmit()" >
-                <img src="/assets/icon-arrow.svg" alt="">
+                <img src="/assets/icon-arrow.svg" alt="submit"> 
             </button>
         </div>
     </div>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GeoDataService } from '../geo-data.service';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-ip-tracker',
   templateUrl: './ip-tracker.component.html',
-  styleUrls: ['./ip-tracker.component.scss']
+  styleUrls: ['./ip-tracker.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class IpTrackerComponent implements OnInit {
 

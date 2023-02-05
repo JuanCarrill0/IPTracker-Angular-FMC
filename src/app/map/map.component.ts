@@ -1,11 +1,13 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoDataService } from '../geo-data.service';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements AfterViewInit {
   private map!: L.Map | L.LayerGroup<any>;
