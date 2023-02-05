@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GeoDataService } from '../geo-data.service';
 
@@ -7,10 +7,12 @@ import { GeoDataService } from '../geo-data.service';
   templateUrl: './ip-tracker.component.html',
   styleUrls: ['./ip-tracker.component.scss']
 })
-export class IpTrackerComponent {
+export class IpTrackerComponent implements OnInit {
 
   data: any;
   
+  private API_KEY = '999c56f9e69bf6dde4a2aa2dfa753724d7cc40895f8da2e1c8983438';
+
   /*Variables de información*/
   city:String = '';
   ip:String= '';
@@ -23,26 +25,48 @@ export class IpTrackerComponent {
   lat: number = 0;
   lng: number = 0;
   inputValue = '';
+  ipAddress = '';
   
   constructor(private geoData:GeoDataService ,private http: HttpClient) { }
 
 
-  
+  getIp(){
+    this.http.get('https://api.ipify.org?format=json')
+    return new Promise<void>((resolve) => {
+      // Código para obtener la dirección IP
+      this.http.get('https://api.ipify.org?format=json')
+        .subscribe(data => {
+          this.data = data;
+          this.ipAddress = this.data.ip;
+          resolve();
+        });
+    });
+  }
+
+  newInput(){
+    this.ipAddress = this.inputValue;
+  }
+
   onSubmit(){
-    this.http.get('https://geo.ipify.org/api/v2/country,city?apiKey=at_9WAxrKoHWwaeHrYlzeReKcm0kqahg&ipAddress='+this.inputValue)
+    this.http.get('https://api.ipdata.co/'+this.ipAddress+'?api-key='+this.API_KEY)
     .subscribe(data => {
       this.data = data;
       this.ip = this.data.ip;
-      this.country = this.data.location.country;
-      this.city = this.data.location.city;
-      this.timezone = this.data.location.timezone;
-      this.isp = this.data.isp;
-      this.lat = this.data.location.lat;
-      this.lng= this.data.location.lng;
-      console.log(this.ip, this.country, this.city, this.timezone, this.isp);
-      // Output: 8.8.8.8 US Mountain View -07:00 Google LLC
-      console.log(this.lng,this.lat)
+      /*Declaracion de variables obtenidas por la api*/
+      this.country = this.data.country_name;
+      this.city = this.data.city;
+      this.lat = this.data.latitude;
+      this.lng= this.data.longitude;
+      this.timezone = this.data.time_zone.offset;
+      this.isp = this.data.asn.name;
+      /*Declaración de variables de longitud y latitud para el servicio */
       this.geoData.updateData(this.lng,this.lat);
+    });
+  }
+
+  ngOnInit() {
+    this.getIp().then(() => {
+      this.onSubmit();
     });
   }
 }

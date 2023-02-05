@@ -13,18 +13,27 @@ export class MapComponent implements AfterViewInit {
   constructor(private geoData:GeoDataService) { }
 
   private initMap(): void {
+
+    const myIcon = L.icon({
+      iconUrl: '/assets/Icon.png',
+      iconSize: [30, 40],
+      iconAnchor: [3, 3],
+      popupAnchor: [0, -2]
+    
+   })
+
     this.map = L.map('map', {
       center: [ this.geoData.lat, this.geoData.lng ],
-      zoom: 18
+      zoom: 12
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 17,
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    L.marker([this.geoData.lat, this.geoData.lng ]).addTo(this.map);
+    L.marker([this.geoData.lat, this.geoData.lng ], {icon: myIcon}).addTo(this.map);
     tiles.addTo(this.map);
   }
 

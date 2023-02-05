@@ -4,10 +4,10 @@
     </div>
     <div class="inputBox">
         <div class="input">
-            <input type="text" name="" id="" [(ngModel)]="inputValue" (keyup.enter)="onSubmit()">
+            <input type="text" name="" id="" [(ngModel)]="inputValue" (keyup.enter)="newInput()" (keyup.enter)="onSubmit()" >
         </div>
         <div class="bottomSubmit">
-            <button type="submit" (click)="onSubmit()">
+            <button type="submit" (click)="newInput()" (click)="onSubmit()" >
                 <img src="/assets/icon-arrow.svg" alt="">
             </button>
         </div>
@@ -30,5 +30,8 @@
             <p class="textGray">ISP </p>
             <p>{{isp}}</p>
         </div>
+    </div>
+    <div class="Dev">
+        <p>Development By <a href="https://github.com/JuanCarrill0/IPTracker-FCM-Angular">Juan Carrillo</a> in Angular Framework</p>
     </div>
 </div>

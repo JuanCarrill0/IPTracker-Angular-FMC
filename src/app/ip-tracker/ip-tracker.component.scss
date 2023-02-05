@@ -9,20 +9,16 @@
 }
 
 .title{
-    position: relative;
-    top:-20px;
     color: white;
     text-align: center;
-
 }
 
 .inputBox{
     display: flex;
     position: relative;
-    top: -60px;
+    top: -20px;
     justify-content: center;
-
-    
+    width: 500px;
 }
 
 .input input{
@@ -66,10 +62,18 @@
     position: absolute;
     z-index: 999;
     top: 190px;
-    left: 15%;
+    left: 10%;
     height: 130px;
-    width: 70%;
+    width: 80%;
     border-radius: 15px;
+}
+
+.Dev{
+    margin: 0;
+    position: relative;
+    margin: 0 auto;
+    top: -50px;
+    z-index: 999;
 }
 
 .textGray{
@@ -79,12 +83,28 @@
 }
 
 .ipInfo,.locationInfo,.timezoneInfo,.ispInfo{
-    margin-left: 50px;
+    margin-left: 20%;
     height: 60px;
 }
 
 .ipInfo,.locationInfo,.timezoneInfo{
     border-right: 0.5px solid hsl(0, 0%, 59%);
-    
-    
 }
+
+@media screen and (max-width: 640px) {
+    .infoBox{
+        font-size: 8px;
+    }
+
+    .input input{
+        width: 250px;
+    }
+
+    .textGray{
+        font-size: 10px;
+    }
+
+    .Dev{
+        font-size: 10px;
+    }
+  }
